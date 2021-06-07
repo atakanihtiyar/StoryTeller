@@ -29,6 +29,11 @@ public class BasicStat
     {
         return value;
     }
+
+    public override string ToString()
+    {
+        return type + ": " + value;
+    }
 }
 
 public enum StatType { Health, Power, Fearless }

@@ -6,11 +6,13 @@ using UnityEngine.UI;
 public class EventNavigator : MonoBehaviour
 {
     public Event currentEvent;
-    public EventScreener screener;
+    public EventScreener eventScreener;
+    public StatListScreener statListScreener;
 
     private void Start()
     {
-        screener.UpdateUI(currentEvent);
+        eventScreener.UpdateUI(currentEvent);
+        statListScreener.UpdateUI();
     }
 
     public void GoNextEvent(int selectedChoiceIndex)
@@ -18,7 +20,8 @@ public class EventNavigator : MonoBehaviour
         EventLogger.Instance.PushEvent(currentEvent);
         currentEvent = currentEvent.OnExit(selectedChoiceIndex);
         currentEvent.OnEnter();
-        screener.UpdateUI(currentEvent);
+        eventScreener.UpdateUI(currentEvent);
+        statListScreener.UpdateUI();
     }
 
     public void RewindButton()
@@ -28,6 +31,7 @@ public class EventNavigator : MonoBehaviour
         currentEvent.OnRewind();
         Event oldEvent = EventLogger.Instance.PopEvent();
         currentEvent = oldEvent;
-        screener.UpdateUI(currentEvent);
+        eventScreener.UpdateUI(currentEvent);
+        statListScreener.UpdateUI();
     }
 }

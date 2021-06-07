@@ -9,15 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef34fe54bc4eb8f45aa4f762441b256b, type: 3}
+  m_Script: {fileID: 11500000, guid: 50d11c4fb29cf3542b512163adfbf63b, type: 3}
   m_Name: UseHealthPotion
   m_EditorClassIdentifier: 
-  description: "Can iksiri kullan\u0131ld\u0131."
+  description: "Can\u0131n artt\u0131"
   sprite: {fileID: 0}
   isEnd: 0
-  nextChoices:
-  - _name: "Ba\u015Fa d\xF6n"
-    _nextEvent: {fileID: 11400000, guid: f90690ba394620348bda3a36e1282895, type: 2}
   statModifiers:
   - type: 0
     value: 1
+  nextChoices: []

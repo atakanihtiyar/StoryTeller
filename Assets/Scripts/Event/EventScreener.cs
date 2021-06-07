@@ -21,7 +21,7 @@ public class EventScreener : MonoBehaviour
         for (int i = 0; i < choiceTexts.Length; i++)
         {
             SetActivateParent(choiceTexts[i], false);
-            if (i < nextChoices.Length)
+            if (i < nextChoices.Length && nextChoices[i].GetNextEvent().PassFilter())
             {
                 SetActivateParent(choiceTexts[i], true);
                 choiceTexts[i].text = nextChoices[i].GetName();

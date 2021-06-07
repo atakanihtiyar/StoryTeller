@@ -12,8 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50d11c4fb29cf3542b512163adfbf63b, type: 3}
   m_Name: Empty Event
   m_EditorClassIdentifier: 
-  description: 
+  description: Empty Description
   sprite: {fileID: 0}
   isEnd: 0
   statModifiers: []
-  nextChoices: []
+  statFilters: []
+  nextChoices:
+  - _name: "Yand\u0131n"
+    _nextEvent: {fileID: 11400000, guid: 920979096100e7342aacb2b02bd844d8, type: 2}
+  - _name: Hadi yine iyisin
+    _nextEvent: {fileID: 11400000, guid: f0451c1a6e5b1944dabe1273b630565c, type: 2}

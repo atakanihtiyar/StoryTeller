@@ -9,6 +9,7 @@ public class Event : ScriptableObject
     public Sprite sprite;
     public bool isEnd;
     public BasicStat[] statModifiers;
+    public BasicStat[] statFilters;
     public Choice[] nextChoices;
 
     public string GetDescription()
@@ -23,8 +24,7 @@ public class Event : ScriptableObject
 
     public void OnEnter()
     {
-        StatList playerStatList = GameObject.FindGameObjectWithTag("Player").GetComponent<StatList>();
-        ApplyStats(playerStatList, 1);
+        ApplyStats(1);
 
         if (isEnd)
             GameController.Instance.state = GameState.End;
@@ -32,8 +32,10 @@ public class Event : ScriptableObject
 
     public void OnRewind()
     {
-        StatList playerStatList = GameObject.FindGameObjectWithTag("Player").GetComponent<StatList>();
-        ApplyStats(playerStatList, -1);
+        ApplyStats(-1);
+
+        if (!isEnd)
+            GameController.Instance.state = GameState.Play;
     }
 
     public Event OnExit(int selectedChoiceIndex)
@@ -41,11 +43,28 @@ public class Event : ScriptableObject
         return nextChoices[selectedChoiceIndex].GetNextEvent();
     }
 
-    public void ApplyStats(StatList statList, int modifierMultiplier)
+    public bool PassFilter()
     {
+        StatList playerStatList = GameObject.FindGameObjectWithTag("Player").GetComponent<StatList>();
+
+        bool didPass = false;
+        for (int i = 0; i < statFilters.Length; i++)
+        {
+            BasicStat playerStat = playerStatList.FindBasicStat(statFilters[i].type);
+            if (playerStat.value > statFilters[i].value)
+                didPass = true;
+        }
+
+        return didPass;
+    }
+
+    public void ApplyStats(int modifierMultiplier)
+    {
+        StatList playerStatList = GameObject.FindGameObjectWithTag("Player").GetComponent<StatList>();
+
         for (int i = 0; i < statModifiers.Length; i++)
         {
-            statList.UpdateStat(statModifiers[i].type, statModifiers[i].value * modifierMultiplier);
+            playerStatList.UpdateStat(statModifiers[i].type, statModifiers[i].value * modifierMultiplier);
         }
     }
 }

@@ -16,7 +16,7 @@ public class EventNavigator : MonoBehaviour
     public void GoNextEvent(int selectedChoiceIndex)
     {
         EventLogger.Instance.PushEvent(currentEvent);
-        currentEvent = currentEvent.GetChoiceAt(selectedChoiceIndex);
+        currentEvent = currentEvent.OnExit(selectedChoiceIndex);
         currentEvent.OnEnter();
         screener.UpdateUI(currentEvent);
     }

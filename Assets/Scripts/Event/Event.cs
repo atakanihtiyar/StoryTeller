@@ -2,56 +2,50 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "New Event", menuName = "StoryTeller/Event")]
 public class Event : ScriptableObject
 {
     public string description;
     public Sprite sprite;
     public bool isEnd;
+    public BasicStat[] statModifiers;
     public Choice[] nextChoices;
 
-    public virtual string GetDescription()
+    public string GetDescription()
     {
         return description;
     }
 
-    public virtual Sprite GetImage()
+    public Sprite GetImage()
     {
         return sprite;
     }
 
-    public virtual void OnEnter()
+    public void OnEnter()
     {
+        StatList playerStatList = GameObject.FindGameObjectWithTag("Player").GetComponent<StatList>();
+        ApplyStats(playerStatList, 1);
+
         if (isEnd)
             GameController.Instance.state = GameState.End;
     }
 
-    public virtual void OnRewind()
+    public void OnRewind()
     {
-
+        StatList playerStatList = GameObject.FindGameObjectWithTag("Player").GetComponent<StatList>();
+        ApplyStats(playerStatList, -1);
     }
 
-    public virtual void OnExit(int selectedChoiceIndex)
-    {
-
-    }
-
-    public virtual Event GetChoiceAt(int selectedChoiceIndex)
+    public Event OnExit(int selectedChoiceIndex)
     {
         return nextChoices[selectedChoiceIndex].GetNextEvent();
     }
 
-    public virtual string[] GetChoiceTexts()
+    public void ApplyStats(StatList statList, int modifierMultiplier)
     {
-        string[] choiceTexts = new string[nextChoices.Length];
-        for (int i = 0; i < nextChoices.Length; i++)
+        for (int i = 0; i < statModifiers.Length; i++)
         {
-            choiceTexts[i] = nextChoices[i].GetName();
+            statList.UpdateStat(statModifiers[i].type, statModifiers[i].value * modifierMultiplier);
         }
-        return choiceTexts;
-    }
-
-    public virtual void SetNextChoices()
-    {
-
     }
 }

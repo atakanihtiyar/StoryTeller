@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class EventNavigator : MonoBehaviour
 {
-    public List<string> narrativeLog;
+    public Queue<Event> eventLog = new Queue<Event>();
     public Event currentEvent;
 
     public Image image;
@@ -21,7 +21,6 @@ public class EventNavigator : MonoBehaviour
     {
         image.sprite = currentEvent.sprite;
         narrator.text = currentEvent.GetDescription();
-        narrativeLog.Add(currentEvent.GetDescription());
 
         SetChoiceTexts();
     }
@@ -47,10 +46,14 @@ public class EventNavigator : MonoBehaviour
 
     public void GetNextEvent(int selectedChoiceIndex)
     {
-        currentEvent = currentEvent.OnExit(selectedChoiceIndex);
-        currentEvent.OnEnter();
+        Event newEvent = currentEvent.OnExit(selectedChoiceIndex);
+        newEvent.OnEnter();
+        IsGameEnd(newEvent);
+
+        eventLog.Enqueue(currentEvent);
+        currentEvent = newEvent;
+
         UpdateUI();
-        IsGameEnd(currentEvent);
     }
 
     public void IsGameEnd(Event newEvent)

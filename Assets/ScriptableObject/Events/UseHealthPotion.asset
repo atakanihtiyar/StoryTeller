@@ -20,6 +20,4 @@ MonoBehaviour:
     _nextEvent: {fileID: 11400000, guid: f90690ba394620348bda3a36e1282895, type: 2}
   statModifiers:
   - type: 0
-    value: 2
-  - type: 2
     value: 1

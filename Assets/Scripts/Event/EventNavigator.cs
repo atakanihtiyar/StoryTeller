@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class EventNavigator : MonoBehaviour
 {
-    public Queue<Event> eventLog = new Queue<Event>();
+    public Stack<Event> eventLog = new Stack<Event>();
     public Event currentEvent;
 
     public Image image;
@@ -50,7 +50,7 @@ public class EventNavigator : MonoBehaviour
         newEvent.OnEnter();
         IsGameEnd(newEvent);
 
-        eventLog.Enqueue(currentEvent);
+        eventLog.Push(currentEvent);
         currentEvent = newEvent;
 
         UpdateUI();
@@ -60,5 +60,17 @@ public class EventNavigator : MonoBehaviour
     {
         if (currentEvent.isEnd)
             GameController.Instance.state = GameState.End;
+    }
+
+    public void RewindButton()
+    {
+        if (eventLog.Count > 0)
+        {
+            currentEvent.OnRewind();
+            Event oldEvent = eventLog.Pop();
+            currentEvent = oldEvent;
+        }
+
+        UpdateUI();
     }
 }

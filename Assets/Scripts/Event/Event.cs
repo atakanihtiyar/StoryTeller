@@ -24,6 +24,11 @@ public class Event : ScriptableObject
 
     }
 
+    public virtual void OnRewind()
+    {
+
+    }
+
     public virtual Event OnExit(int selectedChoiceIndex)
     {
         return nextChoices[selectedChoiceIndex].GetNextEvent();

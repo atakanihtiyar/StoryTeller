@@ -14,6 +14,14 @@ public class StoryEvent : Event
         ApplyStats(playerStatList);
     }
 
+    public override void OnRewind()
+    {
+        base.OnRewind();
+
+        StatList playerStatList = GameObject.FindGameObjectWithTag("Player").GetComponent<StatList>();
+        RewindStats(playerStatList);
+    }
+
     public override Event OnExit(int selectedChoiceIndex)
     {
         return base.OnExit(selectedChoiceIndex);
@@ -23,7 +31,15 @@ public class StoryEvent : Event
     {
         for (int i = 0; i < statModifiers.Length; i++)
         {
-            statList.UpdateStat(statModifiers[i]);
+            statList.UpdateStat(statModifiers[i].type, statModifiers[i].value);
+        }
+    }
+
+    public void RewindStats(StatList statList)
+    {
+        for (int i = 0; i < statModifiers.Length; i++)
+        {
+            statList.UpdateStat(statModifiers[i].type, -statModifiers[i].value);
         }
     }
 

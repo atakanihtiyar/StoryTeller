@@ -12,9 +12,9 @@ public class StatList : MonoBehaviour
         return Stats.Find(stat => stat.type == type);
     }
 
-    public void UpdateStat(BasicStat modifier)
+    public void UpdateStat(StatType modifierType, int modifierValue)
     {
-        BasicStat stat = FindBasicStat(modifier.type);
-        stat.value += modifier.value;
+        BasicStat stat = FindBasicStat(modifierType);
+        stat.value += modifierValue;
     }
 }

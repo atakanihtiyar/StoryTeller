@@ -18,7 +18,6 @@ MonoBehaviour:
   nextChoices:
   - _name: Neredeyim ben.
     _nextEvent: {fileID: 11400000, guid: bc2cd0a488ef5bb4da333ee96145c169, type: 2}
-  - _name: "\xC7antan\u0131 a\xE7."
-    _nextEvent: {fileID: 11400000, guid: fd8da8e0ede16b9409bc07e2b6e5d5b8, type: 2}
-  itemsToAdd: []
-  itemsToUse: []
+  - _name: Can iksiri kullan.
+    _nextEvent: {fileID: 11400000, guid: 4f26b6f6ce25a9c448e319199762eaef, type: 2}
+  statModifiers: []

@@ -4,9 +4,27 @@ using UnityEngine.Events;
 [CreateAssetMenu(fileName = "New Story Event", menuName = "Story Teller/Story Event")]
 public class StoryEvent : Event
 {
-    public override Event GetNextEvent(int index)
+    public BasicStat[] statModifiers;
+
+    public override void OnEnter()
     {
-        return base.GetNextEvent(index);
+        base.OnEnter();
+
+        StatList playerStatList = GameObject.FindGameObjectWithTag("Player").GetComponent<StatList>();
+        ApplyStats(playerStatList);
+    }
+
+    public override Event OnExit(int selectedChoiceIndex)
+    {
+        return base.OnExit(selectedChoiceIndex);
+    }
+
+    public void ApplyStats(StatList statList)
+    {
+        for (int i = 0; i < statModifiers.Length; i++)
+        {
+            statList.UpdateStat(statModifiers[i]);
+        }
     }
 
     public override string GetDescription()

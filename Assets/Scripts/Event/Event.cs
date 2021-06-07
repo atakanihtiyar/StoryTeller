@@ -19,9 +19,14 @@ public class Event : ScriptableObject
         return sprite;
     }
 
-    public virtual Event GetNextEvent(int index)
+    public virtual void OnEnter()
     {
-        return nextChoices[index].GetNextEvent();
+
+    }
+
+    public virtual Event OnExit(int selectedChoiceIndex)
+    {
+        return nextChoices[selectedChoiceIndex].GetNextEvent();
     }
 
     public virtual string[] GetChoiceTexts()

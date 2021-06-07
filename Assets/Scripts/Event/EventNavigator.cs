@@ -45,12 +45,12 @@ public class EventNavigator : MonoBehaviour
         choiceText.transform.parent.gameObject.SetActive(activate);
     }
 
-    public void GetNextEvent(int index)
+    public void GetNextEvent(int selectedChoiceIndex)
     {
-        Event tempEvent = currentEvent.GetNextEvent(index);
-        currentEvent = tempEvent;
+        currentEvent = currentEvent.OnExit(selectedChoiceIndex);
+        currentEvent.OnEnter();
         UpdateUI();
-        IsGameEnd(tempEvent);
+        IsGameEnd(currentEvent);
     }
 
     public void IsGameEnd(Event newEvent)

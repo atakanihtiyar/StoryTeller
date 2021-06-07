@@ -22,9 +22,9 @@ public class StoryEvent : Event
         RewindStats(playerStatList);
     }
 
-    public override Event OnExit(int selectedChoiceIndex)
+    public override void OnExit(int selectedChoiceIndex)
     {
-        return base.OnExit(selectedChoiceIndex);
+
     }
 
     public void ApplyStats(StatList statList)

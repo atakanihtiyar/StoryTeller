@@ -7,7 +7,7 @@ public class Event : ScriptableObject
     public string description;
     public Sprite sprite;
     public bool isEnd;
-    public List<Choice> nextChoices;
+    public Choice[] nextChoices;
 
     public virtual string GetDescription()
     {
@@ -21,7 +21,8 @@ public class Event : ScriptableObject
 
     public virtual void OnEnter()
     {
-
+        if (isEnd)
+            GameController.Instance.state = GameState.End;
     }
 
     public virtual void OnRewind()
@@ -29,15 +30,20 @@ public class Event : ScriptableObject
 
     }
 
-    public virtual Event OnExit(int selectedChoiceIndex)
+    public virtual void OnExit(int selectedChoiceIndex)
+    {
+
+    }
+
+    public virtual Event GetChoiceAt(int selectedChoiceIndex)
     {
         return nextChoices[selectedChoiceIndex].GetNextEvent();
     }
 
     public virtual string[] GetChoiceTexts()
     {
-        string[] choiceTexts = new string[nextChoices.Count];
-        for (int i = 0; i < nextChoices.Count; i++)
+        string[] choiceTexts = new string[nextChoices.Length];
+        for (int i = 0; i < nextChoices.Length; i++)
         {
             choiceTexts[i] = nextChoices[i].GetName();
         }

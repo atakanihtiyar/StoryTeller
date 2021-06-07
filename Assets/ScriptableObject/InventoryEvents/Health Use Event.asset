@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef34fe54bc4eb8f45aa4f762441b256b, type: 3}
+  m_Name: Health Use Event
+  m_EditorClassIdentifier: 
+  description: "Can\u0131n yenilendi"
+  sprite: {fileID: 0}
+  isEnd: 0
+  nextChoices:
+  - _name: 
+    _nextEvent: {fileID: 11400000, guid: fd8da8e0ede16b9409bc07e2b6e5d5b8, type: 2}
+  itemsToAdd: []
+  itemsToUse:
+  - {fileID: 11400000, guid: 6b2cc89a17ceba44cb8841511808fc8c, type: 2}

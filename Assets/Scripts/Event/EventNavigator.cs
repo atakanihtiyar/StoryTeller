@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class EventNavigator : MonoBehaviour
 {
-    public Stack<Event> eventLog = new Stack<Event>();
     public Event currentEvent;
 
     public Image image;
@@ -50,7 +49,7 @@ public class EventNavigator : MonoBehaviour
         newEvent.OnEnter();
         IsGameEnd(newEvent);
 
-        eventLog.Push(currentEvent);
+        EventLogger.Instance.PushEvent(currentEvent);
         currentEvent = newEvent;
 
         UpdateUI();
@@ -64,10 +63,10 @@ public class EventNavigator : MonoBehaviour
 
     public void RewindButton()
     {
-        if (eventLog.Count > 0)
+        if (EventLogger.Instance.Logs.Count > 0)
         {
             currentEvent.OnRewind();
-            Event oldEvent = eventLog.Pop();
+            Event oldEvent = EventLogger.Instance.PopEvent();
             currentEvent = oldEvent;
         }
 

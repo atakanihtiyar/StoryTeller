@@ -5,7 +5,7 @@ using UnityEngine;
 public class EventLogger : MonoBehaviour
 {
     #region Singleton
-    public static EventLog Instance;
+    public static EventLogger Instance;
 
     private void Awake()
     {

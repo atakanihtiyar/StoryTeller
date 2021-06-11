@@ -1,13 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class EventScreener : MonoBehaviour
 {
     public Image image;
-    public Text narrator;
-    public Text[] choiceTexts;
+    public TMP_Text narrator;
+    public TMP_Text[] choiceTexts;
 
     public void UpdateUI(Event newEvent)
     {
@@ -29,7 +30,7 @@ public class EventScreener : MonoBehaviour
         }
     }
 
-    public void SetActivateParent(Text choiceText, bool activate)
+    public void SetActivateParent(TMP_Text choiceText, bool activate)
     {
         choiceText.transform.parent.gameObject.SetActive(activate);
     }

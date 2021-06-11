@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50d11c4fb29cf3542b512163adfbf63b, type: 3}
   m_Name: Empty Event
   m_EditorClassIdentifier: 
-  description: Empty Description
+  description: "Bo\u015F i\u015Fler"
   sprite: {fileID: 0}
   isEnd: 0
   statModifiers: []

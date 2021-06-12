@@ -16,7 +16,5 @@ MonoBehaviour:
   sprite: {fileID: 0}
   isEnd: 0
   statModifiers: []
-  statFilters:
-  - type: 0
-    value: 1
+  statFilters: []
   nextChoices: []

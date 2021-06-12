@@ -48,12 +48,14 @@ public class Event : ScriptableObject
         StatList playerStatList = GameObject.FindGameObjectWithTag("Player").GetComponent<StatList>();
 
         bool didPass = false;
-        for (int i = 0; i < statFilters.Length; i++)
+        int i;
+        for (i = 0; i < statFilters.Length; i++)
         {
             BasicStat playerStat = playerStatList.FindBasicStat(statFilters[i].type);
             if (playerStat.value > statFilters[i].value)
                 didPass = true;
         }
+        if (i == 0) didPass = true;
 
         return didPass;
     }

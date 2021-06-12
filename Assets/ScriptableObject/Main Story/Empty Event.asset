@@ -22,5 +22,3 @@ MonoBehaviour:
     _nextEvent: {fileID: 11400000, guid: 920979096100e7342aacb2b02bd844d8, type: 2}
   - _name: Hadi yine iyisin
     _nextEvent: {fileID: 11400000, guid: f0451c1a6e5b1944dabe1273b630565c, type: 2}
-  - _name: Can kullan
-    _nextEvent: {fileID: 11400000, guid: 4f26b6f6ce25a9c448e319199762eaef, type: 2}

@@ -7,7 +7,12 @@ using UnityEngine.UI;
 public class EventScreener : MonoBehaviour
 {
     public TMP_Text narrator;
-    public TMP_Text[] choiceTexts;
+    private ChoiceButton[] choiceButtons;
+
+    private void Awake()
+    {
+        choiceButtons = GetComponentsInChildren<ChoiceButton>();
+    }
 
     public void UpdateUI(Event newEvent)
     {
@@ -17,19 +22,14 @@ public class EventScreener : MonoBehaviour
 
     public void SetChoiceTexts(Choice[] nextChoices)
     {
-        for (int i = 0; i < choiceTexts.Length; i++)
+        for (int i = 0; i < choiceButtons.Length; i++)
         {
-            SetActivateParent(choiceTexts[i], false);
+            choiceButtons[i].SetActivate(false);
             if (i < nextChoices.Length && nextChoices[i].GetNextEvent().PassFilter())
             {
-                SetActivateParent(choiceTexts[i], true);
-                choiceTexts[i].text = nextChoices[i].GetName();
+                choiceButtons[i].SetActivate(true);
+                choiceButtons[i].UpdateText(nextChoices[i].GetName());
             }
         }
-    }
-
-    public void SetActivateParent(TMP_Text choiceText, bool activate)
-    {
-        choiceText.transform.parent.gameObject.SetActive(activate);
     }
 }

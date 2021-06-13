@@ -6,7 +6,6 @@ using UnityEngine;
 public class Event : ScriptableObject
 {
     public string description;
-    public Sprite sprite;
     public bool isEnd;
     public BasicStat[] statModifiers;
     public BasicStat[] statFilters;
@@ -15,11 +14,6 @@ public class Event : ScriptableObject
     public string GetDescription()
     {
         return description;
-    }
-
-    public Sprite GetImage()
-    {
-        return sprite;
     }
 
     public void OnEnter()

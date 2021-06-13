@@ -6,13 +6,11 @@ using UnityEngine.UI;
 
 public class EventScreener : MonoBehaviour
 {
-    public Image image;
     public TMP_Text narrator;
     public TMP_Text[] choiceTexts;
 
     public void UpdateUI(Event newEvent)
     {
-        image.sprite = newEvent.GetImage();
         narrator.text = newEvent.GetDescription();
         SetChoiceTexts(newEvent.nextChoices);
     }

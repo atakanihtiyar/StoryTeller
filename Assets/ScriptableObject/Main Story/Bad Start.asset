@@ -13,8 +13,11 @@ MonoBehaviour:
   m_Name: Bad Start
   m_EditorClassIdentifier: 
   description: "K\xF6t\xFC ba\u015Flang\u0131\xE7"
-  sprite: {fileID: 0}
   isEnd: 0
   statModifiers: []
   statFilters: []
-  nextChoices: []
+  nextChoices:
+  - _name: 
+    _nextEvent: {fileID: 11400000, guid: 2f58adefe70fcee4092cfedd43aaafbe, type: 2}
+  - _name: 
+    _nextEvent: {fileID: 11400000, guid: f0451c1a6e5b1944dabe1273b630565c, type: 2}

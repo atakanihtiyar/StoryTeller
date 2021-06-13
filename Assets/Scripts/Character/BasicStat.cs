@@ -6,8 +6,9 @@ using UnityEngine;
 public class BasicStat
 {
     public StatType type;
+    public Sprite sprite;
 
-    [Range(0, 5)]
+    [Range(0, 10)]
     public int value = 0;
 
     public void AddValue()
@@ -36,4 +37,4 @@ public class BasicStat
     }
 }
 
-public enum StatType { Health, Power, Fearless }
+public enum StatType { Power, Corruption }

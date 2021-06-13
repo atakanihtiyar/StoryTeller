@@ -7,24 +7,26 @@ using UnityEngine.UI;
 public class StatListScreener : MonoBehaviour
 {
     public StatList statList;
-    public List<TMP_Text> tmpTexts;
+    public List<BasicSlider> sliders;
     public GameObject tmpPrefab;
 
     private void Start()
     {
         for (int i = 0; i < statList.stats.Count; i++)
         {
-            TMP_Text tmpText = Instantiate(tmpPrefab, transform).GetComponent<TMP_Text>();
-            tmpText.text = statList.stats[i].value.ToString();
-            tmpTexts.Add(tmpText);
+            BasicSlider basicSlider = Instantiate(tmpPrefab, transform).GetComponent<BasicSlider>();
+            basicSlider.OnCreate();
+            basicSlider.UpdateUI(statList.stats[i].sprite, statList.stats[i].value);
+            
+            sliders.Add(basicSlider);
         }
     }
 
     public void UpdateUI()
     {
-        for (int i = 0; i < tmpTexts.Count; i++)
+        for (int i = 0; i < sliders.Count; i++)
         {
-            tmpTexts[i].text = statList.stats[i].ToString();
+            sliders[i].UpdateUI(statList.stats[i].sprite, statList.stats[i].value);
         }
     }
 }

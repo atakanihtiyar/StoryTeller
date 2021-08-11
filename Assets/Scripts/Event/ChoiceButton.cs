@@ -7,7 +7,7 @@ public class ChoiceButton : MonoBehaviour
 {
     TMP_Text tmp_Text;
 
-    void Start()
+    void OnEnable()
     {
         tmp_Text = GetComponentInChildren<TMP_Text>();
     }

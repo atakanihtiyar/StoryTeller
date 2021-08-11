@@ -25,7 +25,7 @@ public class EventScreener : MonoBehaviour
         for (int i = 0; i < choiceButtons.Length; i++)
         {
             choiceButtons[i].SetActivate(false);
-            if (i < nextChoices.Length && nextChoices[i].GetNextEvent().PassFilter())
+            if (i < nextChoices.Length)
             {
                 choiceButtons[i].SetActivate(true);
                 choiceButtons[i].UpdateText(nextChoices[i].GetName());

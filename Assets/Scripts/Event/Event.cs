@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Event", menuName = "StoryTeller/Event")]
 public class Event : ScriptableObject
 {
-    public string description;
+    [TextArea] public string description;
     public bool isEnd;
     public Choice[] nextChoices;
 

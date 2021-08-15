@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EventLogger : MonoBehaviour
+public class PassageLogger : MonoBehaviour
 {
     #region Singleton
-    public static EventLogger Instance;
+    public static PassageLogger Instance;
 
     private void Awake()
     {
@@ -20,15 +20,15 @@ public class EventLogger : MonoBehaviour
     }
     #endregion
 
-    private Stack<Event> logs = new Stack<Event>();
-    public Stack<Event> Logs { get => logs; }
+    private Stack<Passage> logs = new Stack<Passage>();
+    public Stack<Passage> Logs { get => logs; }
 
-    public void PushEvent(Event newEvent)
+    public void PushPassage(Passage passage)
     {
-        Logs.Push(newEvent);
+        Logs.Push(passage);
     }
 
-    public Event PopEvent()
+    public Passage PopPassage()
     {
         return Logs.Pop(); 
     }

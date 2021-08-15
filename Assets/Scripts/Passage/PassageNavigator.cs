@@ -21,7 +21,7 @@ public class PassageNavigator : MonoBehaviour
         passageScreener.UpdateUI(rootOfPassages.passages[currentIndex]);
     }
 
-    public void GoNextEvent(int selectedChoiceIndex)
+    public void GoNextPassage(int selectedChoiceIndex)
     {
         PassageLogger.Instance.PushPassage(rootOfPassages.passages[currentIndex]);
         if (selectedChoiceIndex == 0)

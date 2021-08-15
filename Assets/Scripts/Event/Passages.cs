@@ -1,5 +1,7 @@
-﻿[System.Serializable]
+﻿using System.Collections.Generic;
+
+[System.Serializable]
 public class Passages
 {
-    public Passage[] passages;
+    public List<Passage> passages;
 }

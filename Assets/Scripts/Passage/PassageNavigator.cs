@@ -23,7 +23,7 @@ public class PassageNavigator : MonoBehaviour
 
     public void GoNextEvent(int selectedChoiceIndex)
     {
-        //EventLogger.Instance.PushEvent(currentEvent);
+        PassageLogger.Instance.PushPassage(rootOfPassages.passages[currentIndex]);
         if (selectedChoiceIndex == 0)
         {
             int newIndex = rootOfPassages.passages.FindIndex(x => x.title == rootOfPassages.passages[currentIndex].to_name1);
@@ -41,10 +41,10 @@ public class PassageNavigator : MonoBehaviour
 
     public void RewindButton()
     {
-        //if (EventLogger.Instance.Logs.Count == 0) return;
+        if (PassageLogger.Instance.Logs.Count == 0) return;
 
-        //Event oldEvent = EventLogger.Instance.PopEvent();
-        //currentEvent = oldEvent;
-        //eventScreener.UpdateUI(currentEvent);
+        Passage oldPassage = PassageLogger.Instance.PopPassage();
+        currentIndex = rootOfPassages.passages.IndexOf(oldPassage);
+        passageScreener.UpdateUI(rootOfPassages.passages[currentIndex]);
     }
 }
